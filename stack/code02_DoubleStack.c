@@ -5,7 +5,7 @@
 
 void push(DStack stack, int e, int tag) {
   if (stack->top2 - stack->top1 == 1) {
-    printf("使用空间已满");
+    printf("使用空间已满\n");
     return;
   }
 
@@ -21,33 +21,47 @@ void push(DStack stack, int e, int tag) {
  *
  * @param stack
  */
-void initDStack(DStack* stack) {
-  *stack = (DNode*)malloc(sizeof(DNode));
+void initDStack(DStack *stack) {
+  *stack = (DNode *)malloc(sizeof(DNode));
   (*stack)->top1 = -1;
   (*stack)->top2 = MAXSIZE;
 }
 
+void destroyDStack(DStack *stack) { free(*stack); }
+
 int pop(DStack s, int tag) {
   if (tag == 1) {
     if (s->top1 == -1) {
-      printf("没数据了");
-      return NULL;
+      printf("没数据了\n");
+      abort();
     } else {
       return s->data[s->top1--];
     }
   } else {
     if (s->top2 == MAXSIZE) {
-      return NULL;
+      printf("没数据了\n");
+      abort();
     } else {
       return s->data[s->top2++];
     }
   }
 }
 
-int main(int argc, char const* argv[]) {
+int main(int argc, char const *argv[]) {
+  testDestroy();
   testPush();
   testPop();
   return 0;
+}
+
+// test
+
+void testDestroy() {
+  DStack s;
+  initDStack(&s);
+  push(s, 1, 1);
+  push(s, 2, 2);
+  destroyDStack(&s);
 }
 
 void testPop() {
