@@ -22,7 +22,7 @@ void push(DStack stack, int e, int tag) {
  * @param stack
  */
 void initDStack(DStack *stack) {
-  *stack = (DNode *)malloc(sizeof(DNode));
+  *stack = (Node *)malloc(sizeof(Node));
   (*stack)->top1 = -1;
   (*stack)->top2 = MAXSIZE;
 }
@@ -45,6 +45,33 @@ int pop(DStack s, int tag) {
       return s->data[s->top2++];
     }
   }
+}
+
+/**
+ * @brief Get the Top of stack
+ *
+ * @param s
+ * @param tag stack 1 / 2
+ * @return int
+ */
+int getTop(DStack s, int tag) {
+  int top;
+
+  if (tag == 1) {
+    top = s->top1;
+    if (top == -1) {
+      printf("栈1 空了\n");
+      abort();
+    }
+  } else {
+    top = s->top2;
+    if (top == MAXSIZE) {
+      printf("栈2 空了\n");
+      abort();
+    }
+  }
+
+  return s->data[top];
 }
 
 int main(int argc, char const *argv[]) {
@@ -71,6 +98,7 @@ void testPop() {
   push(s, 2, 2);
   assert(pop(s, 1) == 1);
   assert(pop(s, 2) == 2);
+
   pop(s, 1);
   pop(s, 2);
 }
@@ -85,6 +113,8 @@ void testPush() {
   push(s, 2, 2);
   push(s, 2, 2);
   push(s, 2, 2);
+  assert(getTop(s, 1) == 1);
+  assert(getTop(s, 2) == 2);
   push(s, 2, 2);
   push(s, 2, 2);
   push(s, 2, 2);
