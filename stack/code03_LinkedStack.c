@@ -1,7 +1,8 @@
 #include "code03_LinkedStack.h"
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 LStack createStack() {
   LStack s = (LNode *)malloc(sizeof(LNode));
   if (s == NULL) {
@@ -53,7 +54,8 @@ int getTop(LStack s) {
 
 int isEmpty(LStack s) { return s->next == NULL; }
 int main(int argc, char const *argv[]) {
-  testCreateStack();
+  // testCreateStack();
+  exampleRegulation();
   return 0;
 }
 
@@ -68,3 +70,33 @@ void testCreateStack() {
   assert(getTop(s) == 2);
   destroyStack(s);
 }
+
+enum {
+  MINUS,
+  MUTIPLE,
+};
+
+enum {
+  PLUS,
+  DIVIDE,
+};
+void exampleRegulation() {
+  LStack s = createStack();
+  char str[100];
+  // getStr(&str);
+  // printf("str[0] is %c %d\n", str[0], (int)str[0]);
+  printf("%d %d %d %d %d %d\n", '+', '-', '*', '/', '(', ')');
+  // for (int i = 0; i < strlen(str); i++) {
+  //   int c = str[i];
+  //   if (isdigit((int)c)) {
+  //     printf("%c ", c);
+  //   }
+  // }
+}
+
+void getStr(char *str) {
+  scanf("%99s", str);
+  printf("%s", str);
+}
+
+int compare() {}
