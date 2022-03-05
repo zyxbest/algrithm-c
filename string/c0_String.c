@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void assign(String &s, char *chars)
+void assign(String *s, char *chars)
 {
 }
 
