@@ -32,6 +32,7 @@ MGraph createGraph(int vertexNum) {
 
   return graph;
 }
+int G[10][10], nv, ne;
 
 void insertEdge(MGraph g, Edge e) {
   // 有向图
@@ -60,6 +61,23 @@ MGraph buildGraph() {
   return graph;
 }
 
+MGraph buildGraphQuick() {
+  int i, j, v1, v2, w;
+  scanf("%d", &nv);
+  for (i = 0; i < nv; i++) {
+    for (j = 0; j < nv; j++) {
+      G[i][j] = 0;
+      G[j][i] = 0;
+    }
+  }
+  scanf("%d", &ne);
+  for (i = 0; i < ne; i++) {
+    scanf("%d %d %d", &v1, &v2, &w);
+    G[v1][v2] = w;
+    G[v2][v1] = w;
+  }
+}
+
 // test
 void buildTest(); // buildgraph 测试
 void handTest();  // 手动第一次测试
@@ -67,11 +85,15 @@ void handTest();  // 手动第一次测试
 int main(int argc, char const *argv[]) {
   handTest();
   buildTest();
+
   return 0;
 }
 
 void buildTest() {
-  MGraph g = buildGraph();
+  // MGraph g = buildGraph();
+
+  buildGraphQuick();
+  assert(G[1][4] == 3);
   //   assert(g->Nv == 8);
   //   assert(g->G[3][6] == 1);
 }
