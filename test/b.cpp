@@ -1,7 +1,9 @@
 #include <iostream>
-// #include <string.h>
+#include <stdio.h>
 using namespace std;
 int main(int argc, char const *argv[]) {
-  cout << "out put!";
+  char a;
+  std::cin >> a;
+  std::cout << a;
   return 0;
 }

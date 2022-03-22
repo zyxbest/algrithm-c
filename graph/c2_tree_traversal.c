@@ -23,6 +23,8 @@ void solve(int preL, int inL, int postL, int n) {
 }
 
 int main(int argc, char const *argv[]) {
+
+  
   solve(0, 0, 0, 6);
   return 0;
 }
