@@ -1,11 +1,12 @@
 #include <assert.h>
 #include <iostream>
 #include <stack>
+
 using namespace std;
 
-const int MaxSize = 6;
+const int MaxSize = 7;
 int pre[MaxSize], in[MaxSize], post[MaxSize];
-int n;
+int n, i, L, R;
 stack<int> s;
 
 void print() {
@@ -47,7 +48,7 @@ void input() {
 }
 
 void solve(int preL, int inL, int postL, int n) {
-  if (n <= 0) {
+  if (n == 0) {
     return;
   }
   if (n == 1) {
@@ -57,15 +58,14 @@ void solve(int preL, int inL, int postL, int n) {
 
   int root = pre[preL];
   post[postL + n - 1] = root;
-  int i = 0;
-  for (; i < n; i++) {
-    if (in[preL + i] == root) {
+  for (i = 0; i < n; i++)
+    if (in[preL + i] == root)
       break;
-    }
-  }
-  int L = i, R = n - i - 1;
+
+  L = i;
+  R = n - L - 1;
   solve(preL + 1, inL, postL, L);
-  solve(preL + i + 1, inL + i + 1, postL + i, R);
+  solve(preL + L + 1, inL + L + 1, postL + L, R);
 }
 
 int main(int argc, char const *argv[]) {
