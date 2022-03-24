@@ -21,7 +21,7 @@ set<string> subs(string s) {
  *
  * @param s 原字串
  * @param i index
- * @param set
+ * @param set 不重复的集合
  * @param path 过程中的子字串
  */
 void process(string s, int i, set<string> &set, string path) {
