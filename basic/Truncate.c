@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// 赋值字串
+// 复制字串
 char *strdupa(char *str) {
   size_t len = strlen(str);
   char *dup = malloc(sizeof(char) * len);
