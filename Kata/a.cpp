@@ -16,7 +16,7 @@ int main(int argc, char const *argv[]) {
   cout << ((1 << 30) - 1) << "\n";
 
   assert(abs(0) == 0);
-  map<char,int> m ; 
+  map<char, int> m;
   cout << ((1 << 31)) << "\n";
   int t = abs(0) > ((1 << 31) / 10);
   cout << t;
