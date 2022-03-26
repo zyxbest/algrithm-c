@@ -1,12 +1,29 @@
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <string.h>
 #include <vector>
 using namespace std;
 
+string best(string &word) {
+  map<char, int> table;
+  for (char c : word) {
+    table[tolower(c)]++;
+  }
+
+  string result;
+  for (char c : word) {
+    result += table[tolower(c)] > 1 ? ')' : '(';
+  }
+
+  return result;
+}
+
 string duplicateEncoder(string str) {
 
   map<char, vector<int>> m;
+  transform(str.begin(), str.end(), str.begin(),
+            [](unsigned char c) { return tolower(c); });
   for (size_t i = 0; i < str.length(); i++) {
     if (m.count(str[i])) {
     } else {
@@ -14,8 +31,19 @@ string duplicateEncoder(string str) {
     }
     m[str[i]].push_back(i);
   }
+  string s = str;
 
-  return "hello";
+  for (auto &[key, values] : m) {
+    if (values.size() > 1) {
+      for (size_t i = 0; i < values.size(); i++) {
+        s[values[i]] = ')';
+      }
+
+    } else {
+      s[values[0]] = '(';
+    }
+  }
+  return s;
 }
 string DuplicateEncoder(string str) {
   // TODO : Your code.
@@ -47,12 +75,9 @@ char *testTemp(char *str) {
 }
 
 int main(int argc, char const *argv[]) {
-  string str = "recede";
-  printf("%s\n", duplicateEncoder(str));
-
-  if (NULL) {
-    printf("null");
-  }
+  string str = "rEcede";
+  cout << duplicateEncoder(str) << '\n';
+  cout << best(str);
 
   // printf("%s", testTemp("if"));
   return 0;
