@@ -1,10 +1,9 @@
 #if !defined(DOUBLE_LISTH_H)
 #define DOUBLE_LISTH_H
 
-typedef struct DNode
-{
-    int value;
-    struct DNode *pre, *next;
+typedef struct DNode {
+  int value;
+  struct DNode *pre, *next;
 } DNode, *DLinkList;
 
 void printList(DLinkList list);

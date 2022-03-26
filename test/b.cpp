@@ -1,8 +1,10 @@
 #include <iostream>
-// #include <string.h>
 using namespace std;
 int main(int argc, char const *argv[]) {
-  cout << "out put!";
+  char a;
+  while (cin.get(a)) {
+    cout << a;
+  }
+
   return 0;
-  
 }
