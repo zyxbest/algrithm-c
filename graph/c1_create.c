@@ -2,13 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MaxVertexNum 10;
-typedef int WeightType, Vertex;
-
+#define INFINITY 65535;         // 无穷
+const int MaxVertexNum = 10;    // 最大顶点数
+typedef int WeightType, Vertex; // 点和边的权值设为int类型
+typedef char DataType;          // 顶点存储的数据设为char类型
 typedef struct GNode {
-  int Nv;
-  int Ne;
-  WeightType G[10][10];
+  int Nv;                                   // 顶点个数
+  int Ne;                                   // 边的个数
+  WeightType G[MaxVertexNum][MaxVertexNum]; // 邻接矩阵
+  DataType Data[MaxVertexNum];              // 顶点存储的数据
 } GNode, *PtrGNode, *MGraph;
 
 typedef struct ENode {
@@ -26,20 +28,18 @@ MGraph createGraph(int vertexNum) {
 
   for (v = 0; v < vertexNum; v++) {
     for (w = 0; w < vertexNum; w++) {
-      graph->G[v][w] = 0;
+      graph->G[v][w] = INFINITY; // 初始化为都不连通
     }
   }
 
   return graph;
 }
-int G[10][10], nv, ne;
 
 void insertEdge(MGraph g, Edge e) {
   // 有向图
-  g->G[e->v1][e->v2] = 1;
-
+  g->G[e->v1][e->v2] = e->weight;
   // 无向图
-  g->G[e->v2][e->v1] = 1;
+  g->G[e->v2][e->v1] = e->weight;
 }
 
 MGraph buildGraph() {
@@ -61,6 +61,7 @@ MGraph buildGraph() {
   return graph;
 }
 
+int G[10][10], nv, ne;
 MGraph buildGraphQuick() {
   int i, j, v1, v2, w;
   scanf("%d", &nv);
@@ -83,16 +84,16 @@ void buildTest(); // buildgraph 测试
 void handTest();  // 手动第一次测试
 
 int main(int argc, char const *argv[]) {
-  handTest();
+  // handTest();
   buildTest();
 
   return 0;
 }
 
 void buildTest() {
-  // MGraph g = buildGraph();
+  MGraph g = buildGraph();
 
-  buildGraphQuick();
+  // buildGraphQuick();
   assert(G[1][4] == 3);
   //   assert(g->Nv == 8);
   //   assert(g->G[3][6] == 1);
