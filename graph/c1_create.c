@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define INFINITY 65535;         // 无穷
-const int MaxVertexNum = 10;    // 最大顶点数
+#define INFINITY 65535          // 无穷
+#define MaxVertexNum 10         // 最大顶点数
 typedef int WeightType, Vertex; // 点和边的权值设为int类型
 typedef char DataType;          // 顶点存储的数据设为char类型
 typedef struct GNode {
@@ -105,7 +105,7 @@ void handTest() {
   assert(g->Nv == 8);
   assert(g->G[0][0] == 0);
 
-  Edge e = malloc(sizeof(ENode));
+  Edge e = (Edge)malloc(sizeof(ENode));
   e->v1 = 1;
   e->v2 = 3;
   e->weight = 10;
