@@ -1,7 +1,9 @@
 #include <assert.h>
+#include <queue>
 #include <stdio.h>
 #include <stdlib.h>
-
+using namespace std;
+/* 邻接矩阵图 */
 #define INFINITY 65535          // 无穷
 #define MaxVertexNum 10         // 最大顶点数
 typedef int WeightType, Vertex; // 点和边的权值设为int类型
@@ -62,7 +64,7 @@ MGraph buildGraph() {
 }
 
 int G[10][10], nv, ne;
-MGraph buildGraphQuick() {
+void buildGraphQuick() {
   int i, j, v1, v2, w;
   scanf("%d", &nv);
   for (i = 0; i < nv; i++) {
@@ -76,6 +78,37 @@ MGraph buildGraphQuick() {
     scanf("%d %d %d", &v1, &v2, &w);
     G[v1][v2] = w;
     G[v2][v1] = w;
+  }
+}
+
+int visited[MaxVertexNum];
+void initVisited() {
+  for (size_t i = 0; i < MaxVertexNum; i++) {
+    visited[i] = false;
+  }
+}
+
+bool hasEdge(MGraph g, int v, int m) { return g->G[v][m] < INFINITY; }
+
+// 广度优先搜索
+void bfs(MGraph g, Vertex v) {
+
+  queue<Vertex> q;
+
+  Vertex temp;
+  visited[v] = true;
+  q.push(v);
+  while (!q.empty()) {
+    temp = q.front();
+    q.pop();
+
+    for (size_t i = 0; i < g->Nv; i++) {
+      if (!visited[i] && hasEdge(g, temp, i)) {
+        printf("正在访问点%d\n", i);
+        visited[i] = true;
+        q.push(i);
+      }
+    }
   }
 }
 
