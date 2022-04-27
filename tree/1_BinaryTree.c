@@ -1,20 +1,22 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct TreeNode {
+typedef struct TreeNode TreeNode, *BinTree;
+struct TreeNode {
   int data;
-  struct TreeNode *left;
-  struct TreeNode *right;
-} TreeNode, *BinTree;
+  BinTree left;
+  BinTree right;
+};
 
 // https://www.bilibili.com/video/BV1JW411i731?p=34&spm_id_from=pageDriver
 BinTree insert(int data);            // 插入一颗二叉树
 void traversalRecursion(BinTree bt); // 遍历（递归）
 
-typedef struct Node {
+typedef struct Node Node, *Stack;
+struct Node {
   BinTree data;
-  struct Node *next;
-} Node, *Stack;
+  Stack next;
+};
 
 Stack createStack();            // 创建具有头结点的stack
 BinTree pop(Stack s);           // 出栈
@@ -95,6 +97,8 @@ TreeNode *delQ(Queue q) {
   free(first);
   return bt;
 }
+
+/******二叉树函数定义处 *******/
 
 BinTree createBinaryTree() {
   BinTree bt = (BinTree)malloc(sizeof(TreeNode));
@@ -205,6 +209,17 @@ void levelTraversal(BinTree bt) {
   free(q);
 }
 
+void getLeaves(BinTree bt) {
+  if (bt) {
+    if (!bt->left && !bt->right) {
+      printf("%d ", bt->data);
+    }
+    getLeaves(bt->left);
+    getLeaves(bt->right);
+  }
+}
+
+// 求树的高度
 int postOrderGetHeight(BinTree bt) {
   BinTree t = bt;
   int left, right, max;
@@ -274,6 +289,7 @@ int main(int argc, char const *argv[]) {
   printf("\n层序遍历");
   levelTraversal(bt);
   printf("\n最大高度为 %d", postOrderGetHeight(bt));
-
+  printf("\nleaves are ");
+  getLeaves(bt);
   return 0;
 }
