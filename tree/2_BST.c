@@ -56,16 +56,12 @@ int isBST(BinTree bt) {
 
 // 递归实现查找
 BinTree find(BinTree bt, int x) {
-  if (!bt) {
-    return NULL;
-  }
-
-  if (x < bt->data) {
-    find(bt->left, x);
-  } else if (x > bt->data) {
-    find(bt->right, x);
-  } else {
+  if (!bt || x == bt->data) {
     return bt;
+  } else if (x < bt->data) {
+    return find(bt->left, x);
+  } else {
+    return find(bt->right, x);
   }
 }
 
@@ -161,7 +157,7 @@ BinTree deleteBST(BinTree bst, int x) {
       } else if (!bst->right) { //  右节点为空
         bst = bst->left;
       }
-      free(temp);
+      free(temp); // 删除单个子节点或者自身
     }
   }
   return bst;
