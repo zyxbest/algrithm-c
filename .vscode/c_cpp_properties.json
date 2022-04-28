@@ -3,7 +3,8 @@
         {
             "name": "gcc",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "D:/software/lib/gcc/mingw32/9.2.0/include/c++/mingw32"
             ],
             "defines": [
                 "_DEBUG",

@@ -1,0 +1,40 @@
+{
+    "statusCode": 200,
+    "headers": {
+        "Pragma": "no-cache",
+        "Vary": "Accept-Encoding",
+        "x-ms-request-id": "4f2f28b0-719d-4543-910e-3040d566497b;5dbfc97e-172d-4142-a76c-2ffd8c7ae507;8805ab0b-7583-4ae4-91d0-27175b2301f0;98ac67fb-fbee-4ca0-ad30-ac68b70032e7",
+        "OData-Version": "4.0",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "Timing-Allow-Origin": "*",
+        "x-ms-apihub-cached-response": "true",
+        "x-ms-apihub-obo": "true",
+        "Cache-Control": "no-store, no-cache",
+        "Date": "Fri, 01 Apr 2022 01:06:41 GMT",
+        "Content-Type": "application/json; odata.metadata=minimal; odata.streaming=true",
+        "Expires": "-1",
+        "Content-Length": "669"
+    },
+    "body": {
+        "@odata.context": "https://excelonline-ea.azconn-ea.p.azurewebsites.net/$metadata#drives('b%21AD3c6DFm_UaXh40LUyhjh6j_GgI7JmtNjD7LPJT_M6oTIjW8X_LtR42v5Fu67tvg')/Files('01GXPCAOJDJGJSNFBO3JE2HWQBGWIOHXGN')/Tables('%7B00000000-000C-0000-FFFF-FFFF00000000%7D')/items",
+        "value": [
+            {
+                "@odata.etag": "",
+                "ItemInternalId": "8b4bcf74-51f5-46b8-9259-8d930c991db3",
+                "ID": "1",
+                "开始时间": "",
+                "完成时间": "",
+                "电子邮件": "",
+                "名称": "",
+                "明天吃饭吗": "",
+                "明天坐车吗": "",
+                "午饭人数": "0",
+                "晚饭人数": "0",
+                "宿舍": "0",
+                "上班": "0"
+            }
+        ]
+    }
+}
