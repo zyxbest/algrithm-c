@@ -26,9 +26,9 @@ class Solution {
  public:
   int findNumbers(vector<int>& nums) {
     int result = 0;
-    for (size_t i = 0; i < nums.size(); i++) {
+    for (int num : nums) {
       // 如果是偶数位,即numSize(nums[i])可以整除2
-      if (!(numSize(nums[i]) % 2)) {
+      if (!(numSize(num) % 2)) {
         result++;
       }
     }
