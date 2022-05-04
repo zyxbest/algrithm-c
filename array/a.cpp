@@ -70,7 +70,7 @@ int countNodesinLoop(struct Node* head) {
   Node* fast = head;
   Node* low = head;
 
-int i;
+  int i;
   while (fast->data != low->data) {
     i++;
     fast = fast->next;
