@@ -3,7 +3,17 @@
 #include <cassert>
 #include <iostream>
 #include <vector>
+#include<stack>
 using namespace std;
+
+// 带有child节点的双向链表节点
+class Node {
+ public:
+  int val;
+  Node* prev;
+  Node* next;
+  Node* child;
+};
 
 // Definition for singly-linked list.
 // 单链表结点定义
