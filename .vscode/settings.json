@@ -1,5 +1,11 @@
 {
-    "C_Cpp.intelliSenseEngineFallback": "Disabled",
-    "C_Cpp.errorSquiggles": "Enabled",
-    "cmake.configureOnOpen": false
+  "C_Cpp.intelliSenseEngineFallback": "Disabled",
+  "C_Cpp.errorSquiggles": "Enabled",
+  "cmake.configureOnOpen": false,
+  "cmake.debugConfig": {
+    // "stopAtEntry": false,
+    // "args": ["a", "b", "c"],
+    // "MIMode": "gdb",
+    "externalConsole": false
+  }
 }
