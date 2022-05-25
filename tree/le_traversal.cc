@@ -255,6 +255,11 @@ class Solution {
     }
     return true;
   }
+
+  // 根据inorder 和postorder 建树
+  TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+    
+  }
 };
 
 int main(int argc, char const* argv[]) {
