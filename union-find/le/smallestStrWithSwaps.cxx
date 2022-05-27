@@ -53,8 +53,9 @@ class Solution {
     }
 
     for (int i = 0; i < s.size(); i++) {
-      char root = uf.find(i);
-      // 不需要判断不存在key???
+      // 这边写成了char, 导致一直有错误找不出来
+      int root = uf.find(i);
+      // 不需要判断不存在key ???
       mapIndex[root].push_back(i);
     }
 
