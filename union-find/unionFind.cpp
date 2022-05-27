@@ -2,7 +2,7 @@
 using namespace std;
 struct Node {
   int v;
-  Node(int vv) : v(vv){};
+  Node(int v) : v(v){};
 };
 
 class UnionFindSet {
@@ -49,7 +49,7 @@ void UnionFindSet::unionSet(int v1, int v2) {
   }
 }
 
-Node* UnionFindSet::findHead(Node* node) {
+/* Node* UnionFindSet::findHead(Node* node) {
   list<Node*> arr;
 
   // 找到顶点
@@ -63,6 +63,15 @@ Node* UnionFindSet::findHead(Node* node) {
     heads[item] = node;
   }
   return node;
+} */
+
+// 递归找到头
+Node* UnionFindSet::findHead(Node* node) {
+  if (node == heads[node]) {
+    return node;
+  }
+  // 绝了, 返回的时候, 同时赋值, 优雅
+  return node = findHead(heads[node]);
 }
 
 bool UnionFindSet::connected(int x, int y) {
