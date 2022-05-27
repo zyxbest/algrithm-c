@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-// 没想到dfs和union find有异曲同工之妙, 关于找 connected component
+// 关于找 connected component
+// 没想到dfs和union find有异曲同工之妙
 class UnionFind {
  private:
   vector<int> root;
@@ -11,6 +12,7 @@ class UnionFind {
   // 不初始化, 就不可以使用
   UnionFind(int sz) : root(sz), size(sz) {
     for (int i = 0; i < sz; i++) {
+      // 因为一开始没有长度, 直接赋值的话, 会报错 out of bound
       root[i] = i;
     }
   }
@@ -25,16 +27,15 @@ class UnionFind {
   void unionSet(int x, int y) {
     int root1 = find(x);
     int root2 = find(y);
-    // 始终root1  size  < root2
     if (root1 != root2) {
-      if (size[root2] > size[root1]) {
+      // 保持 size root1 < root2
+      if (size[root2] < size[root1]) {
         int temp = root2;
         root2 = root1;
         root1 = temp;
       }
       root[root1] = root2;
-      size[root2] = size[root1] + size[root2];
-      // size.erase(root1);
+      size[root2] += size[root1];
     }
   }
 
@@ -44,9 +45,7 @@ class UnionFind {
 class Solution {
  public:
   string smallestStringWithSwapsUnion(string s, vector<vector<int>>& pairs) {
-    // root index  ->  heap char
-    // 小根堆
-    map<int, priority_queue<char, vector<char>, greater<char>>> mapQueue;
+    // root---index
     map<int, vector<int>> mapIndex;
     UnionFind uf(s.size());
     for (auto pair : pairs) {
@@ -54,26 +53,31 @@ class Solution {
     }
 
     for (int i = 0; i < s.size(); i++) {
-      // char c = s[i];
       char root = uf.find(i);
-      // 不存在key, 就新建一个
-      if (mapQueue.find(root) == mapQueue.end()) {
-        // mapQueue[root] = {};
-        mapIndex[root] = {};
-      }
-      // mapQueue[root].push(c);
+      // 不需要判断不存在key???
       mapIndex[root].push_back(i);
     }
 
-    // 按照heap的顺序, 替换原字符串内容
-    for (auto& [key, values] : mapQueue) {
-      vector<int> valueIndex = mapIndex[key];
-      for (auto index : valueIndex) {
-        s[index] = values.top();
-        values.pop();
+    // String to store the answer
+    string smallestString(s.length(), ' ');
+
+    // 遍历index
+    for (auto& [key, indexs] : mapIndex) {
+      vector<char> chars;
+      // 将index 对应的字符, 放入数组
+      for (auto i : indexs) {
+        chars.push_back(s[i]);
+      }
+
+      // 遍历
+      sort(chars.begin(), chars.end());
+
+      // 对应的位置放入对应的字符
+      for (size_t i = 0; i < indexs.size(); i++) {
+        smallestString[indexs[i]] = chars[i];
       }
     }
-    return s;
+    return smallestString;
   }
 
   static const int MAX_SIZE = 10001;
