@@ -81,9 +81,8 @@ class Solution {
     return smallestString;
   }
 
-  static const int MAX_SIZE = 10001;
-  bool visited[MAX_SIZE];
-  vector<int> adj[MAX_SIZE];
+  map<int, bool> visited;
+  map<int, vector<int>> adj;
 
   void DFS(string& s, int v, vector<char>& chars, vector<int>& indices) {
     chars.push_back(s[v]);
