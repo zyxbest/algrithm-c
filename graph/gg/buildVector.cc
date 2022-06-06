@@ -18,7 +18,6 @@ void printGraph(vector<int> arr[], int V) {
 
 int main(int argc, char const *argv[]) {
   int V = 5;
-  vector<int> arr[V];
   vector<int> adj[V];
   addEdge(adj, 0, 1);
   addEdge(adj, 0, 4);

@@ -4,7 +4,7 @@
             "name": "gcc",
             "includePath": [
                 "${workspaceFolder}/**",
-                "D:/software/lib/gcc/mingw32/9.2.0/include/c++/mingw32"
+                "D:/software/msys64/mingw64"
             ],
             "defines": [
                 "_DEBUG",
@@ -12,11 +12,10 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.17763.0",
-            "compilerPath": "D:/software/bin/g++.exe",
-            "cStandard": "c17",
+            "compilerPath": "D:/software/msys64/mingw64/bin/gcc.exe",
+            "cStandard": "c99",
             "cppStandard": "c++20",
-            "intelliSenseMode": "windows-gcc-x64",
-            "configurationProvider": "ms-vscode.cmake-tools"
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4

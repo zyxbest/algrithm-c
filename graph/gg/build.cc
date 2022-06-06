@@ -4,7 +4,6 @@ int main(int argc, char const *argv[]) {
   /**
    * 邻接表构造图
    **/
-
   // m :edge
   // n : points number
   int m, n;
