@@ -40,7 +40,7 @@ bool isBipartite(int g[][V]) {
   // 防止是不连接的图
   for (size_t i = 0; i < V; i++) {
     // 未访问的点
-    if (colors[i] != -1) {
+    if (colors[i] == -1) {
       // 1假为假
       if (!isBipartiteUtil(g, i, colors)) {
         return false;
