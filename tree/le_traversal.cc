@@ -211,10 +211,13 @@ class Solution {
 
   // 是否左右对称的帮助函数
   bool isSymmetricHelper(TreeNode* left, TreeNode* right) {
+    // 有一个不存在就返回 false
+    // 两个不存在就返回true
     if (!left || !right) {
       return left == right;
     }
 
+    // 值不相等, 返回false
     if (left->val != right->val) {
       return false;
     }
@@ -257,9 +260,7 @@ class Solution {
   }
 
   // 根据inorder 和postorder 建树
-  TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-    
-  }
+  TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {}
 };
 
 int main(int argc, char const* argv[]) {
