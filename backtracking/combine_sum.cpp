@@ -1,6 +1,6 @@
 /**
  * @brief 组合
- *
+ * https://leetcode.cn/problems/combination-sum/
  */
 #include <include.h>
 class Solution {
@@ -13,14 +13,14 @@ class Solution {
     if (sum == target) {
       result.push_back(path);
       return;
-    } else if (sum > target) {
-      return;
     }
 
-    for (int i = index; i <= candidates.size(); i++) {
+    // 如果大于的话, 就停止遍历
+    for (int i = index; i < candidates.size() && sum + candidates[i] <= target;
+         i++) {
       int num = candidates[i];
       path.push_back(num);
-      backtracking(index, sum + num);
+      backtracking(index, sum + num);  // 深度里, 可以使用重复的值
       path.pop_back();
     }
   }
